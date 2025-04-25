@@ -11,7 +11,7 @@ using static Limbus_Localization_UI.Additions.Consola;
 
 namespace Limbus_Localization_UI.Additions
 {
-    internal class РазноеДругое
+    internal class Additions
     {
         static Dictionary<string, dynamic> T;
         public static void InitTDictionaryHere(Dictionary<string, dynamic> FromExternal) => T = FromExternal;
@@ -64,19 +64,24 @@ namespace Limbus_Localization_UI.Additions
             catch { }
         }
 
+        /// <summary>
+        /// 此處似乎針對俄文進行處理，且未找到對應Keywords Set.txt，先暫時忽略此段
+        /// </summary>
+        /// <param name="from"></param>
+        /// <returns></returns>
         public static Dictionary<string, string> GetKeywordsSet(string from = "RU")
         {
             Dictionary<string, string> KeywordsSet = new();
 
-            foreach(var line in File.ReadLines(@$"[Ресурсы]\& Stringtypes\BattleKeywords\{from}\Keywords Set.txt"))
-            {
-                string KeywordID = line.Split(": 【")[0];
-                string[] KeywordTexts = line.Split(": 【")[1][0..^1].Split(" ¤ ");
-                foreach(var KeywordText in KeywordTexts)
-                {
-                    KeywordsSet[KeywordText] = KeywordID;
-                }
-            }
+            // foreach(var line in File.ReadLines(@$"[Ресурсы]\& Stringtypes\BattleKeywords\{from}\Keywords Set.txt"))
+            // {
+            //     string KeywordID = line.Split(": 【")[0];
+            //     string[] KeywordTexts = line.Split(": 【")[1][0..^1].Split(" ¤ ");
+            //     foreach(var KeywordText in KeywordTexts)
+            //     {
+            //         KeywordsSet[KeywordText] = KeywordID;
+            //     }
+            // }
 
             return KeywordsSet;
         }
@@ -305,6 +310,25 @@ namespace Limbus_Localization_UI.Additions
                 }
             }
         }
+
+        /// <summary>
+        /// 切換至繁體中文字體
+        /// </summary>
+        public static void SwitchToSarasaGothicTC()
+        {
+            FontFamily SarasaGothicTC = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/SarasaGothicTC/SarasaGothicTC-Bold.ttf");
+            T["Skill PreviewLayout Desc"].FontFamily = SarasaGothicTC;
+            T["PreviewLayout @ EGO Gift"].FontFamily = SarasaGothicTC;
+            T["PreviewLayout @ Skill"].FontFamily = SarasaGothicTC;
+            for (int CoinNumber = 1; CoinNumber <= 5; CoinNumber++)
+            {
+                for (int CoinDescNumber = 1; CoinDescNumber <= 12; CoinDescNumber++)
+                {
+                    T[$"Skill PreviewLayout Coin {CoinNumber} Desc {CoinDescNumber}"].FontFamily = SarasaGothicTC;
+                }
+            }
+        }
+
         public static void SwitchToSDream()
         {
             FontFamily S_Core_Dream_5_Medium = new FontFamily(new Uri("pack://application:,,,/"), "./Fonts/S_Core_Dream/OTF/#S-Core Dream 5 Medium");

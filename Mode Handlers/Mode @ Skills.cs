@@ -326,8 +326,8 @@ namespace Limbus_Localization_UI.Mode_Handlers
                 // Отключить все 6 кнопок
                 for (int i = 1; i <= 12; i++)
                 {
-                    T[$"Coin Descs {i} Button"].Foreground = РазноеДругое.GetColorFromAHEX("#FF333333");
-                    T[$"Coin Descs {i} Button"].BorderBrush = РазноеДругое.GetColorFromAHEX("#FF333333");
+                    T[$"Coin Descs {i} Button"].Foreground = Additions.Additions.GetColorFromAHEX("#FF333333");
+                    T[$"Coin Descs {i} Button"].BorderBrush = Additions.Additions.GetColorFromAHEX("#FF333333");
                     T[$"Coin Descs {i} Button"].IsEnabled = false;
                     T[$"Coin Descs {i} Button"].Content = $"№{i}";
                 }
@@ -339,8 +339,8 @@ namespace Limbus_Localization_UI.Mode_Handlers
                     {
                         if (!EmptydescExceptions.Contains(i))
                         {
-                            T[$"Coin Descs {i} Button"].Foreground = РазноеДругое.GetColorFromAHEX("#FFA69885");
-                            T[$"Coin Descs {i} Button"].BorderBrush = РазноеДругое.GetColorFromAHEX("#FF6B6B6B");
+                            T[$"Coin Descs {i} Button"].Foreground = Additions.Additions.GetColorFromAHEX("#FFA69885");
+                            T[$"Coin Descs {i} Button"].BorderBrush = Additions.Additions.GetColorFromAHEX("#FF6B6B6B");
                             T[$"Coin Descs {i} Button"].IsEnabled = true;
                             if (!Skills_EditBuffer[Skills_Json_Dictionary_CurrentID][Skills_Json_Dictionary_CurrentUptieLevel]["Coins"][Skills_CurrentCoinNumber][i-1].Equals("{unedited}"))
                             {
@@ -366,11 +366,11 @@ namespace Limbus_Localization_UI.Mode_Handlers
                 {
                     if (!EmptydescExceptions.Contains(i))
                     {
-                        T[$"Coin Descs {i} Button"].BorderBrush = РазноеДругое.GetColorFromAHEX("#FF6B6B6B");
+                        T[$"Coin Descs {i} Button"].BorderBrush = Additions.Additions.GetColorFromAHEX("#FF6B6B6B");
                     }
                 }
                 // Включить для выбранного
-                T[$"Coin Descs {DescIndex+1} Button"].BorderBrush = РазноеДругое.GetColorFromAHEX("#FFD1CDC5");
+                T[$"Coin Descs {DescIndex+1} Button"].BorderBrush = Additions.Additions.GetColorFromAHEX("#FFD1CDC5");
             }
             catch { }
         }

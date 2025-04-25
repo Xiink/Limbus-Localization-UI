@@ -2,6 +2,8 @@
 # Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
 ################################################################################
 
+/.idea
+/bin/
 /.vs
 /bin/Debug/net6.0-windows/Limbus Localization UI.deps.json
 /bin/Debug/net6.0-windows/Limbus Localization UI.dll

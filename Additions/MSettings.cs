@@ -33,7 +33,7 @@ namespace Limbus_Localization_UI.Additions
             }
             try
             {
-                T["Json EditBox"].Foreground = РазноеДругое.GetColorFromAHEX("#FF" + Settings[2].Split(" ¤ ")[^1].Trim()[1..]);
+                T["Json EditBox"].Foreground = Additions.GetColorFromAHEX("#FF" + Settings[2].Split(" ¤ ")[^1].Trim()[1..]);
                 T["Settings EditorColor"].Text = "#" + Settings[2].Split(" ¤ ")[^1].Trim()[1..].ToUpper();
             }
             catch { }
@@ -46,8 +46,8 @@ namespace Limbus_Localization_UI.Additions
             try
             {
                 MainWindow.BattleKeywords_Type = Settings[4].Split(" ¤ ")[^1].Trim();
-                (MainWindow.Keywords, MainWindow.KeywordIDName) = РазноеДругое.GetKeywords(from: MainWindow.DefinedKeywords[MainWindow.BattleKeywords_Type]);
-                MainWindow.Replacements = РазноеДругое.GetAddtReplacements(from: MainWindow.DefinedKeywords[MainWindow.BattleKeywords_Type]);
+                (MainWindow.Keywords, MainWindow.KeywordIDName) = Additions.GetKeywords(from: MainWindow.DefinedKeywords[MainWindow.BattleKeywords_Type]);
+                MainWindow.Replacements = Additions.GetAddtReplacements(from: MainWindow.DefinedKeywords[MainWindow.BattleKeywords_Type]);
                 T["Keywords Type Display"].Text = MainWindow.BattleKeywords_Type;
             }
             catch { }
@@ -65,11 +65,15 @@ namespace Limbus_Localization_UI.Additions
 
             if (MainWindow.BattleKeywords_Type == "KR")
             {
-                РазноеДругое.SwitchToSDream();
+                Additions.SwitchToSDream();
             }
             else if (MainWindow.BattleKeywords_Type == "CN")
             {
-                РазноеДругое.SwitchToSourceHanSansSC();
+                Additions.SwitchToSourceHanSansSC();
+            }
+            else if (MainWindow.BattleKeywords_Type == "Hant")
+            {
+                Additions.SwitchToSarasaGothicTC();
             }
         }
 

@@ -74,7 +74,7 @@ namespace Limbus_Localization_UI
                     switch (TagBody[0])
                     {
                         case "TextColor":
-                            TargetRun.Foreground = РазноеДругое.GetColorFromAHEX($"#ff{TagBody[1]}");
+                            TargetRun.Foreground = Additions.Additions.GetColorFromAHEX($"#ff{TagBody[1]}");
                             break;
 
                         case "FontFamily":
@@ -88,7 +88,7 @@ namespace Limbus_Localization_UI
                             break;
 
                         case "UptieHighlight":
-                            TargetRun.Foreground = РазноеДругое.GetColorFromAHEX($"#fff8c200");
+                            TargetRun.Foreground = Additions.Additions.GetColorFromAHEX($"#fff8c200");
                             break;
 
                         case "TextStyle":

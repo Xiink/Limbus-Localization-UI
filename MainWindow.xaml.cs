@@ -15,7 +15,7 @@ using Limbus_Localization_UI.Mode_Handlers;
 using static Limbus_Localization_UI.TextBases;
 using static Limbus_Localization_UI.TagManager;
 using static Limbus_Localization_UI.Additions.Consola;
-using static Limbus_Localization_UI.Additions.РазноеДругое;
+using static Limbus_Localization_UI.Additions.Additions;
 
 namespace Limbus_Localization_UI
 {
@@ -143,7 +143,7 @@ namespace Limbus_Localization_UI
                     string KeywordsFolder = Config[LineIndex + 2][10..];
                     DefinedKeywords[KeywordsTitle] = KeywordsFolder;
 
-                    KeywordsSelector.Items.Add(new { Text = KeywordsTitle, FontSize = 16, Margin = new Thickness(-5,0,0,0), HorizontalAlignment = HorizontalAlignment.Center, Foreground = РазноеДругое.GetColorFromAHEX(@"#FFB4B4B4") });
+                    KeywordsSelector.Items.Add(new { Text = KeywordsTitle, FontSize = 16, Margin = new Thickness(-5,0,0,0), HorizontalAlignment = HorizontalAlignment.Center, Foreground = Additions.Additions.GetColorFromAHEX(@"#FFB4B4B4") });
                 }
 
                 LineIndex++;
@@ -164,7 +164,7 @@ namespace Limbus_Localization_UI
                     string LangFile = Config[LineIndex + 2][8..];
                     DefinedLanguages[LangTitle] = LangFile;
 
-                    LanguageSelector.Items.Add(new { Text = LangTitle, FontSize = 17, HorizontalAlignment=HorizontalAlignment.Center, Foreground = РазноеДругое.GetColorFromAHEX(@"#FFB4B4B4") }); 
+                    LanguageSelector.Items.Add(new { Text = LangTitle, FontSize = 17, HorizontalAlignment=HorizontalAlignment.Center, Foreground = Additions.Additions.GetColorFromAHEX(@"#FFB4B4B4") });
                 }
 
                 LineIndex++;
@@ -593,7 +593,7 @@ namespace Limbus_Localization_UI
             Mode_Handlers.Mode_Skills   .InitTDictionaryHere(T);
             Mode_Handlers.Mode_EGO_Gifts.InitTDictionaryHere(T);
             Mode_Handlers.Mode_Passives .InitTDictionaryHere(T);
-            РазноеДругое.InitTDictionaryHere(T);
+            Additions.Additions.InitTDictionaryHere(T);
 
             StartInits();
         }
@@ -1235,7 +1235,7 @@ namespace Limbus_Localization_UI
                 if (TextItem.StartsWith("color=#") & TextItem.Length == 13)
                 {
                     string ColorCode = Regex.Match(TextItem, @"([0-9a-fA-F]{6})").Groups[1].ToString();
-                    if (РазноеДругое.IsColor(ColorCode))
+                    if (Additions.Additions.IsColor(ColorCode))
                     {
                         for (int RangeIndex = TextItem_Index + 1; RangeIndex < TextSegmented_Count; RangeIndex++)
                         {
@@ -3430,9 +3430,11 @@ namespace Limbus_Localization_UI
                 MSettings.SaveSetting("Keywords Type", BattleKeywords_Type);
 
 
-                if (BattleKeywords_Type.Equals("KR")) РазноеДругое.SwitchToSDream();
-                else if (BattleKeywords_Type.Equals("CN")) РазноеДругое.SwitchToSourceHanSansSC();
-                else РазноеДругое.SwitchToPretendard();
+                if (BattleKeywords_Type.Equals("KR")) Additions.Additions.SwitchToSDream();
+                else if (BattleKeywords_Type.Equals("CN")) Additions.Additions.SwitchToSourceHanSansSC();
+                else if (BattleKeywords_Type.Equals("Hant")) Additions.Additions.SwitchToSarasaGothicTC();
+
+                else Additions.Additions.SwitchToPretendard();
 
                 Call_UpdatePreview(LastPreviewUpdateText, LastPreviewUpdateTarget);
             }
@@ -3528,9 +3530,9 @@ namespace Limbus_Localization_UI
                 string selectedLang = LanguageSelector.SelectedItem.ToString().Split("{ Text = ")[1].Split(", FontSize")[0];
                 LangLabel.Text = selectedLang;
                 rin(DefinedLanguages[selectedLang]);
-                ApplyLanguage(DefinedLanguages[selectedLang].Replace(".llang", ""));
+                ApplyLanguage(DefinedLanguages[selectedLang].Replace(".llang", "").Replace(": ",""));
                 SelectedLanguage_Display.Text = selectedLang;
-                MSettings.SaveSetting("UI Language", DefinedLanguages[selectedLang].Replace(".llang", ""));
+                MSettings.SaveSetting("UI Language", DefinedLanguages[selectedLang].Replace(".llang", "").Replace(": ",""));
             }
             catch { }
         }
@@ -3549,9 +3551,10 @@ namespace Limbus_Localization_UI
                 MSettings.SaveSetting("Keywords Type", BattleKeywords_Type);
 
 
-                if (BattleKeywords_Type.Equals("KR")) РазноеДругое.SwitchToSDream();
-                else if (BattleKeywords_Type.Equals("CN")) РазноеДругое.SwitchToSourceHanSansSC();
-                else РазноеДругое.SwitchToPretendard();
+                if (BattleKeywords_Type.Equals("KR")) Additions.Additions.SwitchToSDream();
+                else if (BattleKeywords_Type.Equals("CN")) Additions.Additions.SwitchToSourceHanSansSC();
+                else if (BattleKeywords_Type.Equals("Hant")) Additions.Additions.SwitchToSarasaGothicTC();
+                else Additions.Additions.SwitchToPretendard();
 
                 Call_UpdatePreview(LastPreviewUpdateText, LastPreviewUpdateTarget);
             }
