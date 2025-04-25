@@ -75,7 +75,9 @@ namespace Limbus_Localization_UI.Mode_Handlers
                 string s = InterfaceTextContent["[Left Menu] EGO Gift Description № Button"];
                 for (int i = 1; i <= 5; i++)
                 {
-                    T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);// $"Простое описание {i}";
+                    // T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);// $"Простое описание {i}";
+                    var content = InterfaceTextContent[$"[Left Menu] EGO Gift Description {i} Button"];
+                    T[$"EditorSwitch SubDesc {i}"].Content = content;
                 }
             }
             catch { }

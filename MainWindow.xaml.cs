@@ -1,5 +1,6 @@
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -235,27 +236,33 @@ namespace Limbus_Localization_UI
             
             if (EditorMode.Equals("EGOgift") & !OnlyStartedNow)
             {
-                string s = InterfaceTextContent["[Left Menu] EGO Gift Description № Button"];
+                // string s = InterfaceTextContent["[Left Menu] EGO Gift Description № Button"];
                 for (int i = 1; i <= 5; i++)
                 {
+
+                    var content = InterfaceTextContent[$"[Left Menu] EGO Gift Description {i} Button"];
+
                     rin($"SimpleDesc{i}");
                     if (!EGOgift_EditBuffer[EGOgift_Json_Dictionary_CurrentID][$"SimpleDesc{i}"].Equals("{unedited}"))
                     {
-                        T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i) + "*";
+                        // T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i) + "*";
+                        T[$"EditorSwitch SubDesc {i}"].Content = content + "*";
                     }
                     else
                     {
-                        T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);
+                        // T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);
+                        T[$"EditorSwitch SubDesc {i}"].Content = content;
                     }
                 }
             }
 
             if (EditorMode.Equals("Skills"))
             {
-                string s = InterfaceTextContent["[Left Menu] Skill Coin № Button"];
+                // string s = InterfaceTextContent["[Left Menu] Skill Coin № Button"];
                 for (int i = 1; i <= 5; i++)
                 {
-                    T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);
+                    // T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);
+                    T[$"EditorSwitch SubDesc {i}"].Content = InterfaceTextContent[$"[Left Menu] Skill Coin {i} Button"];
                 }
             }
 
@@ -819,16 +826,20 @@ namespace Limbus_Localization_UI
                         default:
 
                             char DescNumber = EGOgift_CurrentEditingField[^1];
-                            string s = InterfaceTextContent["[Left Menu] EGO Gift Description № Button"];
+                            // string s = InterfaceTextContent["[Left Menu] EGO Gift Description № Button"];
+
+                            var content = InterfaceTextContent[$"[Left Menu] EGO Gift Description {DescNumber} Button"];
 
                             if (JsonEditor.Text.Equals(EGOgift_Json_Dictionary[EGOgift_Json_Dictionary_CurrentID][$"SimpleDesc{DescNumber}"]))
                             {
-                                T[$"EditorSwitch SubDesc {DescNumber}"].Content = s.Exform(DescNumber);
+                                // T[$"EditorSwitch SubDesc {DescNumber}"].Content = s.Exform(DescNumber);
+                                T[$"EditorSwitch SubDesc {DescNumber}"].Content = content;
                                 EGOgift_EditBuffer[EGOgift_Json_Dictionary_CurrentID][$"SimpleDesc{DescNumber}"] = "{unedited}";
                             }
                             else
                             {
-                                T[$"EditorSwitch SubDesc {DescNumber}"].Content = s.Exform(DescNumber) + "*";
+                                // T[$"EditorSwitch SubDesc {DescNumber}"].Content = s.Exform(DescNumber) + "*";
+                                T[$"EditorSwitch SubDesc {DescNumber}"].Content = content + "*";
                                 EGOgift_EditBuffer[EGOgift_Json_Dictionary_CurrentID][$"SimpleDesc{DescNumber}"] = JsonEditor.Text.Replace("\r", "");
                             }
 
@@ -1689,16 +1700,20 @@ namespace Limbus_Localization_UI
                     SwitchEditorTo_Desc.Content = s;
 
 
-                s = InterfaceTextContent["[Left Menu] EGO Gift Description № Button"];
+                // s = InterfaceTextContent["[Left Menu] EGO Gift Description № Button"];
                 for (int i = 1; i <= 5; i++)
                 {
+                    var content = InterfaceTextContent[$"[Left Menu] EGO Gift Description {i} Button"];
+
                     if (!EGOgift_EditBuffer[EGOgift_Json_Dictionary_CurrentID][$"SimpleDesc{i}"].Equals("{unedited}"))
                     {
-                        T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i) + "*";
+                        // T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i) + "*";
+                        T[$"EditorSwitch SubDesc {i}"].Content = content + "*";
                     }
                     else
                     {
-                        T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);
+                        // T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);
+                        T[$"EditorSwitch SubDesc {i}"].Content = content;
                     }
 
                 }
@@ -3425,6 +3440,13 @@ namespace Limbus_Localization_UI
                     (Keywords, KeywordIDName) = GetKeywords(from: "RU");
                     Replacements = GetAddtReplacements(from: "RU");
                     BattleKeywords_Type = "RU";
+                    BattleKeywords_TypeDisplay.Text = BattleKeywords_Type;
+                }
+                else if (BattleKeywords_Type.Equals("Hant"))
+                {
+                    (Keywords, KeywordIDName) = GetKeywords(from: "Hant");
+                    Replacements = GetAddtReplacements(from: "Hant");
+                    BattleKeywords_Type = "Hant";
                     BattleKeywords_TypeDisplay.Text = BattleKeywords_Type;
                 }
                 MSettings.SaveSetting("Keywords Type", BattleKeywords_Type);

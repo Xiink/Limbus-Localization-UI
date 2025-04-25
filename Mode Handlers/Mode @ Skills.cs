@@ -83,7 +83,9 @@ namespace Limbus_Localization_UI.Mode_Handlers
                 string s = InterfaceTextContent["[Left Menu] Skill Coin № Button"];
                 for (int i = 1; i <= 5;  i++) // Изменить текст на 5 кнопкахс Простого описания на Монету
                 {
-                    T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);
+                    // T[$"EditorSwitch SubDesc {i}"].Content = s.Exform(i);
+                    var content = InterfaceTextContent[$"[Left Menu] Skill Coin {i} Button"];
+                    T[$"EditorSwitch SubDesc {i}"].Content = content;
                 }
             }
             catch { }
