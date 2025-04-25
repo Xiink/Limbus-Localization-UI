@@ -743,12 +743,12 @@ namespace Limbus_Localization_UI
                             if (!JsonEditor.Text.Equals(Skills_Json_Dictionary[Skills_Json_Dictionary_CurrentID][Skills_Json_Dictionary_CurrentUptieLevel]["Coins"][Skills_CurrentCoinNumber][CoinDescIndex]))
                             {
                                 Skills_EditBuffer[Skills_Json_Dictionary_CurrentID][Skills_Json_Dictionary_CurrentUptieLevel]["Coins"][Skills_CurrentCoinNumber][CoinDescIndex] = JsonEditor.Text;
-                                T[$"Coin Descs {CoinDescIndex + 1} Button"].Content = $"№{CoinDescIndex + 1}*";
+                                T[$"Coin Descs {CoinDescIndex + 1} Button"].Content = $"No. {CoinDescIndex + 1}*";
                             }
                             else
                             {
                                 Skills_EditBuffer[Skills_Json_Dictionary_CurrentID][Skills_Json_Dictionary_CurrentUptieLevel]["Coins"][Skills_CurrentCoinNumber][CoinDescIndex] = "{unedited}";
-                                T[$"Coin Descs {CoinDescIndex + 1} Button"].Content = $"№{CoinDescIndex + 1}";
+                                T[$"Coin Descs {CoinDescIndex + 1} Button"].Content = $"No. {CoinDescIndex + 1}";
                             }
 
                             if (Skills_EditBuffer[Skills_Json_Dictionary_CurrentID][Skills_Json_Dictionary_CurrentUptieLevel]["Coins"][Skills_CurrentCoinNumber][CoinDescIndex].Equals("{unedited}"))
@@ -3043,7 +3043,7 @@ namespace Limbus_Localization_UI
 
                                         SetRW(Json_Filepath);
                                         SaveJson(JsonLoader_Skills.JSON, Json_Filepath);
-                                        T[$"Coin Descs {CoinDescIndex + 1} Button"].Content = $"№{CoinDescIndex + 1}";
+                                        T[$"Coin Descs {CoinDescIndex + 1} Button"].Content = $"No. {CoinDescIndex + 1}";
                                         SetRO(Json_Filepath);
                                     }
                                     catch (Exception ex)

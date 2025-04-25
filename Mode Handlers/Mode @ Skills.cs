@@ -331,7 +331,7 @@ namespace Limbus_Localization_UI.Mode_Handlers
                     T[$"Coin Descs {i} Button"].Foreground = Additions.Additions.GetColorFromAHEX("#FF333333");
                     T[$"Coin Descs {i} Button"].BorderBrush = Additions.Additions.GetColorFromAHEX("#FF333333");
                     T[$"Coin Descs {i} Button"].IsEnabled = false;
-                    T[$"Coin Descs {i} Button"].Content = $"№{i}";
+                    T[$"Coin Descs {i} Button"].Content = $"No. {i}";
                 }
 
                 // Включить соответствующее количество (Или же не включать и оставить все недоступными при Disable = true (Смена на 'Desc'))
@@ -346,7 +346,7 @@ namespace Limbus_Localization_UI.Mode_Handlers
                             T[$"Coin Descs {i} Button"].IsEnabled = true;
                             if (!Skills_EditBuffer[Skills_Json_Dictionary_CurrentID][Skills_Json_Dictionary_CurrentUptieLevel]["Coins"][Skills_CurrentCoinNumber][i-1].Equals("{unedited}"))
                             {
-                                T[$"Coin Descs {i} Button"].Content = $"№{i}*";
+                                T[$"Coin Descs {i} Button"].Content = $"No. {i}*";
                             }
                         }
                     }
